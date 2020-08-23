@@ -17,6 +17,8 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity {
     private EditText gues_fld;
     private Button gues_btn;
+    private Button answer;
+    private TextView answer_lb;
     private TextView info;
     private int gues;
     private int previos=0;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void new_game(){
         theNumber=(int) (Math.random() * 100.0D + 1.0D);
+        //.setText(theNumber);
     }
     public void exit_app() {
         System.exit(0);
@@ -96,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         gues_fld = (EditText) findViewById(R.id.gues_fld);
         gues_btn = (Button) findViewById(R.id.gues_btn);
+        answer=(Button)findViewById(R.id.answer);
+        answer_lb=(TextView)findViewById(R.id.answer_lb);
         info = (TextView) findViewById(R.id.info);
         new_game();
         gues_btn.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +111,12 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     exit_app();
                 }
+            }
+        });
+        answer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answer_lb.setText(theNumber+"");
             }
         });
         Toolbar toolbar = findViewById(R.id.toolbar);
